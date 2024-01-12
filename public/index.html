@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Chat</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/uikit@3.17.11/dist/css/uikit.min.css" />
+
+    <style>
+      body {
+        padding: 20px;
+      }
+      #chat {
+        border: 1px solid #eee;
+        padding: 20px;
+        min-height: 200px;
+        max-height: 500px;
+        width: 80%;
+        max-width: 800px;
+        overflow-y: auto;
+      }
+      .name {
+        color: green;
+        font-weight: bold;
+        margin-right: 1em;
+      }
+      .message {
+        color: blue;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="chat"></div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Faker/3.1.0/faker.min.js" referrerpolicy="no-referrer"></script>
+    <script src="./client.js"></script>
+  </body>
+</html>
