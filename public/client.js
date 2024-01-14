@@ -62,9 +62,9 @@ loginContainer.addEventListener('submit', (event) => {
         });
       }
     })
-    .then(({ token }) => {
+    .then(() => {
       const wsProto = location.protocol === 'https:' ? 'wss:' : 'ws:';
-      client = new WebSocket(`${wsProto}//${location.host}?token=${token}`);
+      client = new WebSocket(`${wsProto}//${location.host}`);
 
       loginContainer.style.display = 'none';
 

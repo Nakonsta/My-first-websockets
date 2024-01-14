@@ -4,6 +4,7 @@ import { WebSocketServer } from 'ws';
 import http from 'http';
 import express from 'express';
 import { URL } from 'url';
+import cookie from 'cookie';
 
 const DB = {
   users: [
@@ -37,12 +38,13 @@ app.post('/login', express.json(), (req, res) => {
   const token = nanoid();
   DB.tokens[token] = user.id;
 
-  res.json({ token });
+  res.cookie('token', token).json({ ok: true });
 });
 
 server.on('upgrade', (req, socket, head) => {
-  const { searchParams } = new URL(req.url, `http://${req.headers.host}`);
-  const token = searchParams && searchParams.get('token');
+  console.log(req);
+  const cookies = cookie.parse(req.headers['cookie']);
+  const token = cookies && cookies['token'];
   const userId = token && DB.tokens[token];
 
   if (!userId) {
